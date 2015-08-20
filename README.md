@@ -11,7 +11,7 @@ a `clojure.java.jdbc` datasource definition:
 
 ```clojure
 (ns db.core
-  (:require [ring-jdbc-session.core :refer [jdbc-store]]))
+  (:require [jdbc-ring-session.core :refer [jdbc-store]]))
 
 (def db
   {:subprotocol "postgresql"
@@ -109,11 +109,11 @@ A cleaner thread is provided in the `ring-jdbc-session.cleaner` for removing exp
 
 ```clojure
 (ns db.core
-  (:require [ring-jdbc-session.cleaner :refer [start-cleaner stop-cleaner]))
+  (:require [jdbc-ring-session.cleaner :refer [start-cleaner stop-cleaner]))
 
-(start-cleaner)
+(start-cleaner db)
 
-(stop-cleaner)
+(stop-cleaner session-cleaner)
 ```
 
 The `start-cleaner` function accepts an optional map with the `:interval-secs` key that defaults to 60. This is the number of seconds to sleep between runs.
